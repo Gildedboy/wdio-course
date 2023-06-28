@@ -40,4 +40,31 @@ describe("Home", () => {
     //Check url does not contains get-started
     await expect(browser).not.toHaveUrlContaining("get-started");
   });
+
+  //hard way to get text, this is more useful if I need to manipulate the text
+  it("Find heading element & assert the text - hard way", async () => {
+    //Open Home Page
+    await browser.url("https://practice.automationbro.com/");
+
+    //Find heading element
+    const headingEl = await $(`.elementor-widget-container h1`);
+
+    //get text of the element
+    const headingText = await headingEl.getText();
+
+    //Assert the text
+    await expect(headingText).toEqual("Think different. Make different.");
+  });
+
+  //easier way to get text, in this example its not required to assign the text to a constant variable, instead we use the "toHaveText" assertion, this is more useful when we only need/want to assert the text
+  it("Find heading element & assert the text - easy way", async () => {
+    //Open Home Page
+    await browser.url("https://practice.automationbro.com/");
+
+    //Find heading element
+    const headingEl = await $(`.elementor-widget-container h1`);
+
+    //Assert the text
+    await expect(headingEl).toHaveText("Think different. Make different.");
+  });
 });
