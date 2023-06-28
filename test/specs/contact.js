@@ -1,7 +1,8 @@
 describe("Contact form", () => {
   it("should fill the form and assert the confirmation message", async () => {
     //go to contact page
-    browser.url("/contact");
+    await browser.url("/contact");
+
     //get input elements with css id selectors
     const name = await $("#evf-277-field_ys0GeZISRs-1");
     const email = await $("#evf-277-field_LbH5NxasXM-2");
@@ -29,8 +30,3 @@ describe("Contact form", () => {
     );
   });
 });
-
-//go to contact page
-//fill out form
-//click button
-//assert sucess message
