@@ -23,8 +23,3 @@ describe("Blog", () => {
     }
   });
 });
-
-//open blog page
-//get recent post in an array
-//assert that each post should be 10 > characters
-//assert that the array = 5
