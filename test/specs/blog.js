@@ -3,23 +3,16 @@ describe("Blog", () => {
     //Open Blog Page
     await browser.url("/blog");
 
-    //an empty array that will be used in a loop to insert the text
-    const actualPosts = [];
-
     //get recent post and assign it to a variable
     const recentPosts = await $$(`//section[@id="recent-posts-3"]/ul/li`);
 
-    //for loop for inserting the text of each li item in an actualPosts array
+    //for loop trought the list, getting the text and assert that each post is greater than 10
     for (const post of recentPosts) {
-      actualPosts.push(await post.getText());
+      const postText = await post.getText();
+      await expect(postText.length).toBeGreaterThan(10);
     }
 
-    //assert the length of the actualPosts array
-    await expect(actualPosts).toHaveLength(5);
-
-    //assert that each post is bigger than 10
-    for (const index of actualPosts) {
-      await expect(index.length).toBeGreaterThan(10);
-    }
+    //assert the length of the recentPosts array
+    await expect(recentPosts).toHaveLength(5);
   });
 });
