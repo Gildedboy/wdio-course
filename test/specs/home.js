@@ -42,21 +42,21 @@ describe("Home", () => {
   });
 
   //hard way to get text, this is more useful if I need to manipulate the text
-  it("Find heading element & assert the text - hard way", async () => {
-    //Open Home Page
-    await browser.url("https://practice.automationbro.com/");
+  // it("Find heading element & assert the text - hard way", async () => {
+  //   //Open Home Page
+  //   await browser.url("https://practice.automationbro.com/");
 
-    //Find heading element
-    const headingEl = await $(`.elementor-widget-container h1`);
+  //   //Find heading element
+  //   const headingEl = await $(`.elementor-widget-container h1`);
 
-    //get text of the element
-    const headingText = await headingEl.getText();
+  //   //get text of the element
+  //   const headingText = await headingEl.getText();
 
-    //Assert the text
-    await expect(headingText).toEqual("Think different. Make different.");
-  });
+  //   //Assert the text
+  //   await expect(headingText).toEqual("Think different. Make different.");
+  // });
 
-  //easier way to get text, in this example its not required to assign the text to a constant variable, instead we use the "toHaveText" assertion, this is more useful when we only need/want to assert the text
+  // //easier way to get text, in this example its not required to assign the text to a constant variable, instead we use the "toHaveText" assertion, this is more useful when we only need/want to assert the text
   it("Find heading element & assert the text - easy way", async () => {
     //Open Home Page
     await browser.url("https://practice.automationbro.com/");
@@ -67,4 +67,5 @@ describe("Home", () => {
     //Assert the text
     await expect(headingEl).toHaveText("Think different. Make different.");
   });
+  //built in webdriverio assertions have retry & wait capabilities, if I try to use toEqual that is a jest assertion <-- will only assert once; instead if i use toHaveText, it will retry a lot of times
 });
